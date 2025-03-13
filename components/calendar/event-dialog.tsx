@@ -1,12 +1,22 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Calendar } from "@/components/ui/calendar";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import {
   Select,
   SelectContent,
@@ -104,7 +114,10 @@ export function EventDialog({
                 <SelectValue>
                   <div className="flex items-center gap-2">
                     <div className={`w-4 h-4 rounded-full ${selectedColor}`} />
-                    {CALENDAR_COLORS.find((c) => c.value === selectedColor)?.name}
+                    {
+                      CALENDAR_COLORS.find((c) => c.value === selectedColor)
+                        ?.name
+                    }
                   </div>
                 </SelectValue>
               </SelectTrigger>
@@ -124,7 +137,10 @@ export function EventDialog({
             <div className="grid gap-2">
               <Popover>
                 <PopoverTrigger asChild>
-                  <Button variant="outline" className="justify-start text-left font-normal">
+                  <Button
+                    variant="outline"
+                    className="justify-start text-left font-normal"
+                  >
                     <CalendarIcon className="mr-2 h-4 w-4" />
                     {format(startDate, "PPP")}
                   </Button>
@@ -141,7 +157,10 @@ export function EventDialog({
             <div className="grid gap-2">
               <Popover>
                 <PopoverTrigger asChild>
-                  <Button variant="outline" className="justify-start text-left font-normal">
+                  <Button
+                    variant="outline"
+                    className="justify-start text-left font-normal"
+                  >
                     <CalendarIcon className="mr-2 h-4 w-4" />
                     {format(endDate, "PPP")}
                   </Button>

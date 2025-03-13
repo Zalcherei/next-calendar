@@ -33,11 +33,14 @@ interface CalendarSidebarProps {
   onCreateClick: () => void;
 }
 
-export function CalendarSidebar({ isOpen, onCreateClick }: CalendarSidebarProps) {
+export function CalendarSidebar({
+  isOpen,
+  onCreateClick,
+}: CalendarSidebarProps) {
   const [calendars, setCalendars] = useState<Calendar[]>([
-    { id: '1', name: 'Personal', color: 'bg-blue-500' },
-    { id: '2', name: 'Work', color: 'bg-green-500' },
-    { id: '3', name: 'Family', color: 'bg-yellow-500' },
+    { id: "1", name: "Personal", color: "bg-blue-500" },
+    { id: "2", name: "Work", color: "bg-green-500" },
+    { id: "3", name: "Family", color: "bg-yellow-500" },
   ]);
   const [showCalendarDialog, setShowCalendarDialog] = useState(false);
   const [editingCalendar, setEditingCalendar] = useState<Calendar | null>(null);
@@ -46,11 +49,13 @@ export function CalendarSidebar({ isOpen, onCreateClick }: CalendarSidebarProps)
 
   const handleCreateCalendar = () => {
     if (editingCalendar) {
-      setCalendars(calendars.map(cal => 
-        cal.id === editingCalendar.id 
-          ? { ...cal, name: newCalendarName, color: selectedColor }
-          : cal
-      ));
+      setCalendars(
+        calendars.map((cal) =>
+          cal.id === editingCalendar.id
+            ? { ...cal, name: newCalendarName, color: selectedColor }
+            : cal,
+        ),
+      );
     } else {
       setCalendars([
         ...calendars,
@@ -68,7 +73,7 @@ export function CalendarSidebar({ isOpen, onCreateClick }: CalendarSidebarProps)
   };
 
   const handleDeleteCalendar = (calendarId: string) => {
-    setCalendars(calendars.filter(cal => cal.id !== calendarId));
+    setCalendars(calendars.filter((cal) => cal.id !== calendarId));
   };
 
   const handleEditCalendar = (calendar: Calendar) => {
@@ -79,10 +84,10 @@ export function CalendarSidebar({ isOpen, onCreateClick }: CalendarSidebarProps)
   };
 
   return (
-    <aside 
+    <aside
       className={cn(
         "border-r p-4 flex flex-col gap-4 transition-all duration-300",
-        isOpen ? "w-64" : "w-0 opacity-0 overflow-hidden"
+        isOpen ? "w-64" : "w-0 opacity-0 overflow-hidden",
       )}
     >
       <Button className="gap-2" onClick={onCreateClick}>
@@ -128,7 +133,9 @@ export function CalendarSidebar({ isOpen, onCreateClick }: CalendarSidebarProps)
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
-                    <DropdownMenuItem onClick={() => handleEditCalendar(calendar)}>
+                    <DropdownMenuItem
+                      onClick={() => handleEditCalendar(calendar)}
+                    >
                       Edit
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
@@ -169,8 +176,13 @@ export function CalendarSidebar({ isOpen, onCreateClick }: CalendarSidebarProps)
                     variant="outline"
                     className="w-full justify-start text-left font-normal"
                   >
-                    <div className={`w-4 h-4 rounded-full ${selectedColor} mr-2`} />
-                    {CALENDAR_COLORS.find((c) => c.value === selectedColor)?.name}
+                    <div
+                      className={`w-4 h-4 rounded-full ${selectedColor} mr-2`}
+                    />
+                    {
+                      CALENDAR_COLORS.find((c) => c.value === selectedColor)
+                        ?.name
+                    }
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-64">
@@ -180,7 +192,7 @@ export function CalendarSidebar({ isOpen, onCreateClick }: CalendarSidebarProps)
                         key={color.value}
                         className={cn(
                           "h-8 w-8 rounded-full flex items-center justify-center",
-                          color.value
+                          color.value,
                         )}
                         onClick={() => setSelectedColor(color.value)}
                       >
@@ -195,7 +207,10 @@ export function CalendarSidebar({ isOpen, onCreateClick }: CalendarSidebarProps)
             </div>
           </div>
           <DialogFooter>
-            <Button variant="outline" onClick={() => setShowCalendarDialog(false)}>
+            <Button
+              variant="outline"
+              onClick={() => setShowCalendarDialog(false)}
+            >
               Cancel
             </Button>
             <Button onClick={handleCreateCalendar}>

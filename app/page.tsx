@@ -12,7 +12,9 @@ export default function Home() {
   const [date, setDate] = useState<Date>(new Date());
   const [isSidebarOpen, setSidebarOpen] = useState(true);
   const [events, setEvents] = useState<CalendarEvent[]>([]);
-  const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(null);
+  const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(
+    null,
+  );
   const [showEventDialog, setShowEventDialog] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
@@ -24,15 +26,17 @@ export default function Home() {
   };
 
   const handleUpdateEvent = (updatedEvent: CalendarEvent) => {
-    setEvents(events.map(event => 
-      event.id === updatedEvent.id ? updatedEvent : event
-    ));
+    setEvents(
+      events.map((event) =>
+        event.id === updatedEvent.id ? updatedEvent : event,
+      ),
+    );
     setShowEventDialog(false);
     setSelectedEvent(null);
   };
 
   const handleDeleteEvent = (eventId: string) => {
-    setEvents(events.filter(event => event.id !== eventId));
+    setEvents(events.filter((event) => event.id !== eventId));
     setShowEventDialog(false);
     setSelectedEvent(null);
   };
@@ -51,8 +55,8 @@ export default function Home() {
 
   return (
     <div className="flex h-screen bg-background">
-      <CalendarSidebar 
-        isOpen={isSidebarOpen} 
+      <CalendarSidebar
+        isOpen={isSidebarOpen}
         onCreateClick={() => {
           setSelectedDate(new Date());
           setSelectedEvent(null);
@@ -60,7 +64,7 @@ export default function Home() {
         }}
       />
       <main className="flex-1 flex flex-col">
-        <CalendarHeader 
+        <CalendarHeader
           view={view}
           date={date}
           onViewChange={setView}
@@ -68,7 +72,7 @@ export default function Home() {
           onToggleSidebar={() => setSidebarOpen(!isSidebarOpen)}
           isSidebarOpen={isSidebarOpen}
         />
-        <Calendar 
+        <Calendar
           view={view}
           date={date}
           events={events}

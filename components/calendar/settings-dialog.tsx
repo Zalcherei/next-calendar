@@ -35,7 +35,8 @@ export function SettingsDialog({
   settings,
   onSaveSettings,
 }: SettingsDialogProps) {
-  const [currentSettings, setCurrentSettings] = useState<CalendarSettings>(settings);
+  const [currentSettings, setCurrentSettings] =
+    useState<CalendarSettings>(settings);
 
   const handleSave = () => {
     onSaveSettings(currentSettings);

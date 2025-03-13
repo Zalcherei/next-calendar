@@ -10,7 +10,15 @@ import {
   Sun,
   Moon,
 } from "lucide-react";
-import { format, addMonths, subMonths, addWeeks, subWeeks, addDays, subDays } from "date-fns";
+import {
+  format,
+  addMonths,
+  subMonths,
+  addWeeks,
+  subWeeks,
+  addDays,
+  subDays,
+} from "date-fns";
 import { ViewType, CalendarSettings } from "@/lib/types";
 import { useState, useEffect } from "react";
 import { SettingsDialog } from "./settings-dialog";
@@ -122,18 +130,10 @@ export function CalendarHeader({
           Today
         </Button>
         <div className="flex items-center gap-2">
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={handlePrevious}
-          >
+          <Button variant="ghost" size="icon" onClick={handlePrevious}>
             <ChevronLeft className="h-4 w-4" />
           </Button>
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={handleNext}
-          >
+          <Button variant="ghost" size="icon" onClick={handleNext}>
             <ChevronRight className="h-4 w-4" />
           </Button>
           <h2 className="text-xl font-medium px-4 min-w-[200px]">
